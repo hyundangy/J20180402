@@ -65,7 +65,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="main.do">놀자GO!</a>
+				<a class="navbar-brand" href="main.jsp">놀자GO!</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
@@ -111,8 +111,8 @@
 			</form>
 			<form class="form-inline">
 				<div class="bline text-center">
-					<a class="btn-lg" href="main.do" role="button">홈&nbsp;으&nbsp;로</a>
-					<a class="btn-lg" href="login.do" role="button">로&nbsp;그&nbsp;인</a>
+					<a class="btn-lg" href="main.jsp" role="button">홈&nbsp;으&nbsp;로</a>
+					<a class="btn-lg" href="login.jsp" role="button">로&nbsp;그&nbsp;인</a>
 				</div>
 			</form>
 		</div>
@@ -129,7 +129,7 @@
 							data-target="#bs-example-navbar-collapse-2">
 							하단메뉴<span class="caret"></span>
 						</button>
-						<a class="navbar-brand" href="#">놀자GO!</a>
+						<a class="navbar-brand" href="main.jsp">놀자GO!</a>
 					</div>
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-2">

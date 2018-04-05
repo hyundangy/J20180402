@@ -20,9 +20,9 @@ public class MemberDAO {
 			instance = new MemberDAO();
 		return instance;
 	}
-	
-	
-	
+
+
+
 	private Connection getConnection() {
 		Connection conn = null;
 		try {
@@ -34,18 +34,57 @@ public class MemberDAO {
 		}
 		return conn;
 	}
-	
+	// 회원정보 가져오기(service.LoginAction)
+	public Member getUserInfo(String id) throws SQLException {
+		String sql = "select * from member where id=?";
+		Connection conn = getConnection();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Member member = new Member();
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				member.setId(rs.getString(1));
+				member.setPassword(rs.getString(2));
+				member.setAdmin(rs.getInt(3));
+				member.setName(rs.getString(4));
+				member.setBirth(rs.getString(5));
+				member.setImage(rs.getString(6));
+				member.setSex(rs.getString(7));
+				member.setAddress(rs.getString(8));
+				member.setEmail(rs.getString(9));
+				member.setTel(rs.getString(10));
+				member.setIntro(rs.getString(11));
+				member.setPoint(rs.getInt(12));
+				member.setReg_date(rs.getDate(13));
+				member.setMem_del_yn(rs.getString(14));
+			}
+			rs.close();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			if(pstmt != null)
+				pstmt.close();
+			if(conn != null)
+				conn.close();
+		}
+		return member;
+	}
+
 	// 아이디 중복체크 (join.jsp -> checkId.jsp)
 	public int checkId(String id) throws SQLException {
 		if(id.length() < 4 || id.length() > 20)
 			return -1;
-		
+
 		String sql = "select id from member where id=?";
 		Connection conn = getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 1;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -73,7 +112,7 @@ public class MemberDAO {
 		Connection conn = getConnection();
 		PreparedStatement pstmt = null;
 		int result = 0;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, member.getId());
@@ -97,7 +136,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	
+
 	// 로그인(login.jsp -> LoginAction.java)
 	public int login(String id, String password) throws SQLException {
 		String sql = "select password from member where id=?";
@@ -105,7 +144,7 @@ public class MemberDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int result = 0;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
@@ -130,7 +169,7 @@ public class MemberDAO {
 		System.out.println(result);
 		return result;
 	}
-	
+
 	//관리자가 3보다 작은, 삭제되지 않은 멤버 전체 수를 뽑는 메소드
 	public int getTotalCnt() throws SQLException {
 		Connection conn = null;
@@ -157,7 +196,7 @@ public class MemberDAO {
 		}
 		return tot;
 	}
-	
+
 	// 관리자가 3보다 작은, 삭제되지 않은 멤버 전체 리스트를 뽑는 메소드
 	public List<Member> memberlist() throws SQLException {
 		List<Member> list = new ArrayList<Member>();
@@ -244,5 +283,5 @@ public class MemberDAO {
 			// TODO Auto-generated method stub
 			return null;
 		}
-	
+
 }

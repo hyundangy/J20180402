@@ -20,16 +20,15 @@ public class JoinAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request,
 			HttpServletResponse response) throws ServerException, IOException {
-		
+
 		String savePath = request.getServletContext().getRealPath("/Profileimg/");
 		int sizeLimit = 5 * 1024 * 1024;
 		MultipartRequest multi = new MultipartRequest(request, savePath, sizeLimit, "utf-8", new DefaultFileRenamePolicy());
-		
+
 			try {
-			System.out.println("---------- JoinAction Start ----------");
 			request.setCharacterEncoding("utf-8");
 			Member member = new Member();
-			
+
 			member.setId(multi.getParameter("id"));
 			member.setPassword(multi.getParameter("password"));
 			member.setName(multi.getParameter("name"));
@@ -41,7 +40,7 @@ public class JoinAction implements CommandProcess {
 			member.setEmail(multi.getParameter("email"));
 			member.setTel(multi.getParameter("tel"));
 			member.setIntro(multi.getParameter("intro"));
-			
+
 			MemberDAO md = MemberDAO.getInstance();
 			int result = md.join(member);
 			if(result != 1)
