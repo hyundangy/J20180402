@@ -34,9 +34,10 @@ public class MemberDAO {
 		}
 		return conn;
 	}
-	// 회원정보 가져오기(service.LoginAction)
+	// 사용하는 곳: (service.LoginAction), (service.MemberContent)
+	// 기능: 아이디를 받아 삭제되지않은 회원정보를 가져온다
 	public Member getUserInfo(String id) throws SQLException {
-		String sql = "select * from member where id=?";
+		String sql = "select * from member where id=? and mem_del_yn = 'N'";
 		Connection conn = getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -278,10 +279,5 @@ public class MemberDAO {
 		return result;
 
 	}
-
-		public Member memberSelect(String id) {
-			// TODO Auto-generated method stub
-			return null;
-		}
 
 }

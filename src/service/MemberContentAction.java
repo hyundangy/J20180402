@@ -19,7 +19,11 @@ public class MemberContentAction implements CommandProcess {
 			String id = request.getParameter("id");
 			String pageNum = request.getParameter("pageNum");
 			MemberDAO md = MemberDAO.getInstance();
-			Member member = md.memberSelect(id);
+			Member member = md.getUserInfo(id);
+			
+			request.setAttribute("id", id);
+			request.setAttribute("pageNum", pageNum);
+			request.setAttribute("member", member);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
