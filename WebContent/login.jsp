@@ -25,7 +25,7 @@
 		margin: 15px 0;
 	}
 	form input:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
-  		font-size: 14px;
+  		font-size: 13px;
 	}
 	form label {
 		font-weight: normal;
@@ -64,6 +64,13 @@
     	font-size: 12px;
     	color: red;
     	margin-bottom: 15px;
+    }
+    /* 아이디 비밀번호 찾기 팝업창 */
+    /* input 넓이 설정 */
+    .modal .input-lg {
+    	width: 300px;
+    	border-radius: 0;
+    	font-size: 13px;
     }
 	</style>
 	<script type="text/javascript">
@@ -124,7 +131,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="main.do">놀자GO!</a>
+				<a class="navbar-brand" href="main.jsp">놀자GO!</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
@@ -167,11 +174,35 @@
 					<input class="pull-left" type="checkbox" id="saveid">&nbsp;아이디저장
 				</label>
 			</div>
-			<a class="text-rihgt pull-right">아이디/비밀번호 찾기</a>
+			<a class="text-rihgt pull-right" data-target="#modal" data-toggle="modal">아이디/비밀번호 찾기</a>
 			<input class="form-control center-block input-lg" id="submit" type="submit" value="로&nbsp;그&nbsp;인">
 		</form>
 	</div>
-
+	<!--------------- 아이디 비밀번호 찾기 팝업창 ----------------->
+	<div class="row">
+		<div class="modal" id="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<a class="find-title">아이디/비밀번호 찾기</a>
+						<button class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal" action="findId.do">
+							<h4 class="text-center">아이디 찾기</h4>
+							<div class="form-group">
+								<input type="text" class="form-control input-lg center-block" name="name" id="name" placeholder="이름">
+								<input type="email" class="form-control input-lg center-block" name="email" id="email" placeholder="이메일 주소">
+								<div id="findid"></div>
+								<input type="submit" class="form-control input-lg center-block" id="submit" value="확&nbsp;인">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<!--------------------  F O O T E R  ------------------>
 	<footer>
 		<div class="container-fluid">
@@ -184,7 +215,7 @@
 							data-target="#bs-example-navbar-collapse-2">
 							하단메뉴<span class="caret"></span>
 						</button>
-						<a class="navbar-brand" href="#">놀자GO!</a>
+						<a class="navbar-brand" href="main.jsp">놀자GO!</a>
 					</div>
 					<div class="collapse navbar-collapse"
 						id="bs-example-navbar-collapse-2">

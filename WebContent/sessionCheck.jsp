@@ -4,6 +4,6 @@
 <%
 	String id = request.getParameter("id");
 	if (id != null) {
-	session.setAttribute("id", id);
-	} 
+		session.setAttribute("id", id); 
+	}
 %>

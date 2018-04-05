@@ -18,9 +18,16 @@ public class LoginAction implements CommandProcess {
 		try {
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
-			MemberDAO member = MemberDAO.getInstance();
-			int result = member.login(id, password);
+			MemberDAO md = MemberDAO.getInstance();
+			Member member = new Member();
+			// 회원정보 가져오는 DAO메소드
+			member = md.getUserInfo(id);
+			
+			// 로그인기능 메소드
+			int result = md.login(id, password);
 			request.setAttribute("id", id);
+			request.setAttribute("name", member.getName());
+			request.setAttribute("admin", member.getAdmin());
 			request.setAttribute("password", password);
 			request.setAttribute("result", result);
 			if(result == 1)
