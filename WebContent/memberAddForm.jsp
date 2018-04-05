@@ -6,6 +6,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원정보 등록</title>
 <link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css">
+
+form .sex-group {
+			margin: 15px;
+			text-align: center;
+		}
+
+</style>
 </head>
 <body>
 <form action = "memberAddPro.do?pageNum=${pageNum}" method = "post">
@@ -13,10 +21,34 @@
 	<caption><h2>회원정보 등록</h2></caption>
 	<tr><td> 아이디 </td><td><input type="text" name="id" required="required" > </td></tr>
 	<tr><td> 비밀번호 </td><td><input type="password" name="password" required="required" > </td></tr>
-	<tr><td> 관리자 여부 </td><td><input type="text" name="admin" required="required" > </td></tr>
+	<tr><td> 관리자 여부 </td><td>
+	<div class="form-group admin-group">
+		<div class="btn-group" data-toggle="buttons">
+			<label class="btn btn-default active">
+                      <input type="radio" name="admin" autocomplete="off" value="1" checked="checked">일반회원
+            </label>
+			<label class="btn btn-default">
+                      <input type="radio"	name="admin" autocomplete="off" value="2">사장님
+            </label>
+		</div>
+	</div>
+	</td></tr>
 	<tr><td> 이름 </td><td><input type="text" name="name" required="required" > </td></tr>
 	<tr><td> 생년월일 </td><td><input type="text" name="birth" required="required" > </td></tr>
-	<tr><td> 성별 </td><td><input type="text" name="sex" required="required" > </td></tr>
+	<input type="hidden" name="image">
+	<tr><td> 성별 </td><td>
+	<!------------ 성 별 버 튼 ------------>
+		<div class="form-group sex-group">
+			<div class="btn-group" data-toggle="buttons">
+				<label class="btn btn-default active">
+                       <input type="radio" name="sex" autocomplete="off" value="남자" checked="checked">남자
+                   </label>
+				<label class="btn btn-default">
+                       <input type="radio"	name="sex" autocomplete="off" value="여자">여자
+                   </label>
+			</div>
+		</div>
+	</td></tr>
 	<tr><td> 주소 </td><td><input type="text" name="address" required="required" > </td></tr>
 	<tr><td> 이메일 </td><td><input type="text" name="email" required="required" > </td></tr>
 	<tr><td> 전화번호 </td><td><input type="text" name="tel" required="required" > </td></tr>

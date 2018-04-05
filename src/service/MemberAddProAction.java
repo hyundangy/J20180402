@@ -23,6 +23,11 @@ public class MemberAddProAction implements CommandProcess {
 			 member.setAdmin(Integer.parseInt(request.getParameter("admin")));
 			 member.setName(request.getParameter("name"));
 			 member.setBirth(request.getParameter("birth"));
+			 
+			 if(request.getParameter("image") == null || request.getParameter("image") == "") {
+				 member.setImage("images/home.png");
+			 }
+			 
 			 member.setSex(request.getParameter("sex"));
 			 member.setAddress(request.getParameter("address"));
 			 member.setEmail(request.getParameter("email"));

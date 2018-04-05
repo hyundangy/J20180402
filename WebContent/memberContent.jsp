@@ -15,12 +15,13 @@ table {
 <body>
 <table border="1">
 	<caption><h2>회원정보 상세내역</h2></caption>
-	<tr><td width="50">아이디</td><td>${id}</td></tr>
+	<tr><td width="50">아이디</td><td>${member.id}</td></tr>
 	<tr><td>비밀번호</td><td>${member.password}</td></tr>
 	<tr><td>관리자여부</td><td>${member.admin}</td></tr>
 	<tr><td>이름</td><td>${member.name}</td></tr>
 	<tr><td>생년월일</td><td>${member.birth}</td></tr>
-	<tr><td>프로필 사진</td><td>${member.image}</td></tr>
+	<tr><td>프로필 사진</td><td>
+	<img src=${member.image} id="imagepreview" style="width: 64px; height: 64px;"></td></tr>
 	<tr><td>성별</td><td>${member.sex}</td></tr>
 	<tr><td>주소</td><td>${member.address}</td></tr>
 	<tr><td>이메일</td><td>${member.email}</td></tr>
@@ -30,11 +31,11 @@ table {
 	<tr><td>가입날짜</td><td>${member.reg_date}</td></tr>	
 	<tr><td colspan="2">
 	<input type="button" value="수정" 
-	onclick="loaction.href='MemberUpdateForm.do?id=${id}&pageNum=${pageNum}'">
+	onclick="location.href='memberUpdateForm.do?id=${id}&pageNum=${pageNum}'">
 	<input type="button" value="삭제"
-	onclick="location.href='MemberDeleteForm.do?id=${id}&pageNum=${pageNum}'">
+	onclick="location.href='memberDeleteForm.do?id=${id}&pageNum=${pageNum}'">
 	<input type="button" value="목록"
-	onclick="location.href='MemberList.do?pageNum=${pageNum}'"></td></tr>
+	onclick="location.href='memberList.do?pageNum=${pageNum}'"></td></tr>
 </table>
 </body>
 </html>
