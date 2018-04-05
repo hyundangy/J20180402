@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="sessionCheck.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,81 @@
 </head>
 <%------------ B O D Y ------------%>
 <body>
-<%@ include file="topMenu.jsp" %>
+<%	
+	if(session.getAttribute("id") != null)
+		id = (String)session.getAttribute("id");
+%>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="main.jsp">놀자GO!</a>
+			</div>
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li><a href="searchGps.do"><span class="sr-only"></span>내주변</a></li>
+					<li><a href="#">장르별</a></li>
+					<li><a href="#">지역별</a></li>
+					<li><a href="partylist.do">함께놀기</a></li>
+					<li><a href="list.do">게시판</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">더보기<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">놀자GO! BEST</a></li>
+							<li><a href="#">놀자GO! 초이스</a></li>
+							<li><a href="#">1:1 문의하기</a></li>
+						</ul></li>
+				</ul>
+				<%	if(id == null) { %>	
+				
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="login.do">로그인</a></li>
+						<li><a href="agree.do">회원가입</a></li>
+					</ul>
+				<%	} else { %>
+				<c:if test="${admin == 1 }">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">예약내역</a></li>
+					<li><a href="#">쪽지함</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><img src="images/home.png" class="pull-left" img-responsive img-circle" id="img">${name }님<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="myinfo.do">내 정보</a></li>
+						<li><a href="#">포인트<span> 0P</span></a></li>
+						<li><a href="#">예약내역<span> 0건</span></a></li>
+						<li><a href="#">찜 목록<span> 0개</span></a></li>
+						<li><a href="logoutAction.do">로그아웃</a></li>
+					</ul></li>
+				</ul>
+				</c:if>
+				<c:if test="${admin == 3 }">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">쪽지함</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><img src="images/home.png" class="pull-left" img-responsive img-circle" id="img">${name }님<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="adminMain.do">관리하기</a></li>
+						<li><a href="logoutAction.do">로그아웃</a></li>
+					</ul></li>
+				</ul>
+				</c:if>
+				<%
+					}
+				%>
+			</div>
+		</div>
+	</nav>
+
 	<!------------------  H E A D E R : JUMBOTRON  ------------------>
 	<div class="container">
 		<div class="jumbotron">
@@ -96,6 +172,76 @@
 		</div>
 	</div>
 
-<%@ include file="footer.jsp" %>
+	<!--------------------  F O O T E R  ------------------>
+	<footer>
+		<div class="container-fluid">
+			<div class="container">
+				<!--------------------  F O O T E R : NAVI  ------------------>
+				<nav class="navbar navbar-default">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse"
+							data-target="#bs-example-navbar-collapse-2">
+							하단메뉴<span class="caret"></span>
+						</button>
+						<a class="navbar-brand" href="main.jsp">놀자GO!</a>
+					</div>
+					<div class="collapse navbar-collapse"
+						id="bs-example-navbar-collapse-2">
+						<ul class="nav navbar-nav">
+							<li><a href="#">회사소개</a></li>
+							<li><a href="#">우리들</a></li>
+							<li><a href="#">인재채용</a></li>
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#">개인정보처리방침</a></li>
+							<li class="divider"></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#">제휴문의</a></li>
+							<li><a href="#">실시간 채팅상담</a></li>
+						</ul>
+					</div>
+				</nav>
+				<div class="row">
+					<div class="col-xs-12">
+						<p class="text-center">
+							<img src="images/fbicon.png" alt="페이스북" style="width: 40px;">&nbsp;&nbsp;&nbsp;<img
+								src="images/instaicon.png" alt="인스타그램" style="width: 40px;">&nbsp;&nbsp;&nbsp;<img
+								src="images/twticon.png" alt="트위터" style="width: 40px"> <br />
+							<br />
+						</p>
+					</div>
+				</div>
+				<!--------------------  F O O T E R : Customer-CALL  ------------------>
+				<div class="row">
+					<div class="col-xs-12">
+						<p class="text-center">
+							고객센터<br />
+							<small>운영시간 : (09:00 - 21:00)<br />점심시간 : (12:00 -
+								13:00)
+							</small>
+						</p>
+					</div>
+				</div>
+				<!--------------------  F O O T E R : INFO  ------------------>
+				<div class="row">
+					<div class="col-xs-12">
+						<p class="text-center">
+							<br />(주) 2조친구들&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;팀장 :
+							방현석&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;메일 : help@noljago.com<br />
+							주소 : 서울 강남구 테헤란로7길 7
+							602호&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;개인정보관리책임자 : 전민구<br />
+							사업자 등록번호 :
+							220-22-23456&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;통신판매업신고 :
+							강남-12122호<br />
+							<br /> Copyright &copy; 2018<br /> (주) 2조친구들<br /> All right
+							reserved.<br />
+							<br />
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
 </body>
 </html>

@@ -281,11 +281,11 @@
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#"><span class="sr-only"></span>내주변</a></li>
+					<li><a href="searchGps.do"><span class="sr-only"></span>내주변</a></li>
 					<li><a href="#">장르별</a></li>
 					<li><a href="#">지역별</a></li>
-					<li><a href="#">함께놀기</a></li>
-					<li><a href="#">게시판</a></li>
+					<li><a href="partylist.do">함께놀기</a></li>
+					<li><a href="list.do">게시판</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">더보기<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="#">공지사항</a></li>

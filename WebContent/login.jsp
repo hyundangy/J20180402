@@ -32,7 +32,7 @@
 		margin: 0;
 		font-size: 14px;
 	}
-	form input[type="submit"] {
+	form #submit {
 		background-color: powderblue;
 		border: none;
 		margin: 15px 0;
@@ -69,9 +69,30 @@
     /* input 넓이 설정 */
     .modal .input-lg {
     	width: 300px;
-    	border-radius: 0;
+    	/* border-radius: 0; */
     	font-size: 13px;
     }
+    .modal #name {
+    	margin-top: 5px;
+    }
+    .modal #id {
+    	margin-top: 5px;
+    }
+    .modal #findOk {
+    	color: white;
+    	background: linear-gradient(141deg, #0fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+    }
+    .modal #mbCont {
+    	margin: 30px auto;
+    }
+    .modal .id-notice {
+    	color: red;
+    	font-size: 10px;
+    }
+    .modal-footer a {
+    	color: black;
+    }
+    
 	</style>
 	<script type="text/javascript">
 	$(document).ready(function(){
@@ -136,11 +157,11 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#"><span class="sr-only"></span>내주변</a></li>
+					<li><a href="searchGps.do"><span class="sr-only"></span>내주변</a></li>
 					<li><a href="#">장르별</a></li>
 					<li><a href="#">지역별</a></li>
-					<li><a href="#">함께놀기</a></li>
-					<li><a href="#">게시판</a></li>
+					<li><a href="partylist.do">함께놀기</a></li>
+					<li><a href="list.do">게시판</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">더보기<span class="caret"></span></a>
@@ -188,15 +209,29 @@
 						<button class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<form class="form-horizontal" action="findId.do">
+						<form class="form-horizontal" id="mbCont" action="findId.do">
 							<h4 class="text-center">아이디 찾기</h4>
-							<div class="form-group">
-								<input type="text" class="form-control input-lg center-block" name="name" id="name" placeholder="이름">
-								<input type="email" class="form-control input-lg center-block" name="email" id="email" placeholder="이메일 주소">
+							<div class="form-group text-center">
+								<a class="id-notice">※가입하실때 입력하셨던 이름과 이메일을 입력해주세요.</a>
+								<input type="text" class="form-control input-lg center-block" name="name" id="name" placeholder="이름" required="required">
+								<input type="email" class="form-control input-lg center-block" name="email" id="email" placeholder="이메일 주소" required="required">
 								<div id="findid"></div>
-								<input type="submit" class="form-control input-lg center-block" id="submit" value="확&nbsp;인">
+								<input type="submit" class="form-control input-lg center-block" id="findOk" value="아이디&nbsp;찾기">
 							</div>
 						</form>
+						<form class="form-horizontal" id="mbCont" action="findPwd.do">
+							<h4 class="text-center">비밀번호 찾기</h4>
+							<div class="form-group text-center">
+								<a class="id-notice">※가입하실때 입력하셨던 아이디와 이메일을 입력해주세요.</a>
+								<input type="text" class="form-control input-lg center-block" name="id" id="id" placeholder="아이디" required="required">
+								<input type="email" class="form-control input-lg center-block" name="email" id="email" placeholder="이메일 주소" required="required">
+								<div id="findpwd"></div>
+								<input type="submit" class="form-control input-lg center-block" id="findOk" value="비밀번호&nbsp;찾기">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer text-center">
+						<a class="close" role="button" id="close" data-dismiss="modal">돌아가기</a>
 					</div>
 				</div>
 			</div>
