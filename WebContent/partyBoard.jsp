@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="sessionCheck.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
@@ -103,11 +104,19 @@ select, input[type=text] {
 				}
 			});
 		});
+		function createChk(){
+			alert("빠른 파티 생성을 위해 카페 검색 페이지로 이동합니다.");
+			location.href="main.do"; //당분간 메인 페이지로 이동
+		};
 	</script>
 
 </head>
 <%------------ B O D Y ------------%>
 <body>
+<%	
+	if(session.getAttribute("id") != null)
+		id = (String)session.getAttribute("id");
+%>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -149,7 +158,7 @@ select, input[type=text] {
 
 	<div class="container">
 		<div class="row">
-			<a href="#" class="btn btn-info pull-right">파티 생성</a>
+			<a class="btn btn-info pull-right" onclick="return createChk()">파티 생성</a>
 			<h2>파티 게시판</h2>
 			<table class="table table-striped"
 				style="text-align: center; border: 1px solid #dddddd;">
@@ -234,7 +243,7 @@ select, input[type=text] {
 									<tr>
 										<td colspan="7"><a href="#" class="btn btn-info pull-center">파티가입</a>&nbsp;&nbsp;
 										<a href="#" class="btn btn-info pull-center">파티정보수정</a>&nbsp;&nbsp;
-										<a href="#"class="btn btn-info pull-center">파티탈퇴</a></td>
+										<a class="btn btn-info pull-center"  href="partyOut.do?pnum=${partyinfo.pnum}&id=<%=id%>&pageNum=${pageNum}">파티탈퇴</a></td>
 								</table>
 							</div>
 						</td>
@@ -261,13 +270,13 @@ select, input[type=text] {
 				</table>
 		<div style="text-align: center;">
 			<c:if test="${startPage>blockSize }">
-				<a href="List.do?pageNum=${startPage-blockSize }">[이전]</a>
+				<a href="partyboard.do?pageNum=${startPage-blockSize }">[이전]</a>
 			</c:if>
 			<c:forEach var="i" begin="${startPage }" end="${endPage }">
-				<a href="List.do?pageNum=${i }">${i }</a>
+				<a href="partyboard.do?pageNum=${i }">[${i }]</a>
 			</c:forEach>
 			<c:if test="${endPage<pageCnt }">
-				<a href="List.do?pageNum=${startPage+blockSize }">[다음]</a>
+				<a href="partyboard.do?pageNum=${startPage+blockSize }">[다음]</a>
 			</c:if>
 		</div>
 			</form>
@@ -351,7 +360,7 @@ select, input[type=text] {
 		//if( divTop + oHeight > sHeight ) divTop -= oHeight;
 		// 레이어 위치를 바꾸었더니 상단기준점(0,0) 밖으로 벗어난다면 상단기준점(0,0)에 배치하자.
 		//if( divLeft < 0 ) divLeft = 0;
-		//if( divTop < 0 ) divTop = 0;
+		//if( divTop < 0 ) divTop = 0; //버그로 인해 주석처리함
 		$(divName).css({
 			"top": divTop,
 			"left": divLeft,
@@ -359,7 +368,7 @@ select, input[type=text] {
 		}).show();
 	},function(){ //mouse out
 		$('.meminfo').hide();
-	}).mousemove(function(ev) { //현재 작동안함
+	}).mousemove(function(ev) {
 		  // 이벤트 좌표
 		  var $ev_x = ev.pageX;
 		  var $ev_y = ev.pageY;

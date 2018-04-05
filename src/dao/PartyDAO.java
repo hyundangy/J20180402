@@ -172,5 +172,33 @@ public class PartyDAO {
 		}
 		return memList;
 	}
+	public int partyOut(int pnum, String id) {
+		int result = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "select * from partymem where pnum=? and id=?";
+		String sql2 = "delete from partymem where id=?";
+		conn = getConn();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, pnum);
+			pstmt.setString(2, id);
+			rs = pstmt.executeQuery();
+			System.out.println(id);
+			if(rs.next()){
+				rs.close();
+				pstmt.close();
+				System.out.println(id);
+				pstmt = conn.prepareStatement(sql2);
+				pstmt.setString(1, id);
+				result = pstmt.executeUpdate();
+				System.out.println(id);
+			}else result = -1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }
