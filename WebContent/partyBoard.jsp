@@ -117,7 +117,7 @@ select, input[type=text] {
 					<span class="sr-only"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">놀자GO!</a>
+				<a class="navbar-brand" href="main.do">놀자GO!</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
@@ -125,8 +125,8 @@ select, input[type=text] {
 					<li><a href="#"><span class="sr-only"></span>내주변</a></li>
 					<li><a href="#">장르별</a></li>
 					<li><a href="#">지역별</a></li>
-					<li><a href="#">함께놀기</a></li>
-					<li><a href="#">게시판</a></li>
+					<li><a href="partyboard.do">함께놀기</a></li>
+					<li><a href="list.do">게시판</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">더보기<span class="caret"></span></a>
@@ -139,7 +139,7 @@ select, input[type=text] {
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="login.do">로그인</a></li>
-					<li><a href="#">회원가입</a></li>
+					<li><a href="join.do">회원가입</a></li>
 				</ul>
 			</div>
 		</div>
