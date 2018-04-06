@@ -160,42 +160,178 @@ h2 {
 		
 		<tr>
 			<td id="content">
-				VR 체험 난이도: <img src="images/f_star.png" width="15" height="20">
-    			<img src="images/f_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
+				VR 체험 난이도: 
+				<c:choose>
+					<c:when test="${theme.score1 eq 1 }">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score1 eq 2}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score1 eq 3}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						
+					</c:when>
+					<c:when test="${theme.score1 eq 4}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score1 eq 5}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+					</c:when>
+				</c:choose>
 			</td>
 		</tr>
 		
 		<tr>
 			<td id="content">
-				스릴감: <img src="images/f_star.png" width="15" height="20">
-    			<img src="images/f_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
+				스릴감: 
+				<c:choose>
+					<c:when test="${theme.score2 eq 1 }">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score2 eq 2}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score2 eq 3}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						
+					</c:when>
+					<c:when test="${theme.score2 eq 4}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score2 eq 5}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+					</c:when>
+				</c:choose>
 			</td>
 		</tr>
 		
 		
 		<tr>
 			<td id="content">
-				공포감: <img src="images/f_star.png" width="15" height="20">
-    			<img src="images/f_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
+				공포감: 
+				<c:choose>
+					<c:when test="${theme.score3 eq 1 }">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score3 eq 2}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score3 eq 3}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						
+					</c:when>
+					<c:when test="${theme.score3 eq 4}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score3 eq 5}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+					</c:when>
+				</c:choose>
 			</td>
 		</tr>
 		
 		<tr>
 			<td id="content">
-				볼거리: <img src="images/f_star.png" width="15" height="20">
-    			<img src="images/f_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
-    			<img src="images/e_star.png" width="15" height="20">
+				볼거리:
+				<c:choose>
+					<c:when test="${theme.score4 eq 1 }">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score4 eq 2}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score4 eq 3}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+						
+					</c:when>
+					<c:when test="${theme.score4 eq 4}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/e_star.png" width="15" height="20">
+					</c:when>
+					<c:when test="${theme.score4 eq 5}">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+						<img src="images/f_star.png" width="15" height="20">
+					</c:when>
+				</c:choose>
 			</td>
 		</tr>
 		
@@ -217,6 +353,8 @@ h2 {
 		
 	</table>
 		</c:forEach>
+	
+	
 	
 	
 </body>

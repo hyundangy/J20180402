@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CafeDAO;
+import dao.Member;
 import dao.Theme;
 
 public class VrReserve2Action implements CommandProcess {
@@ -21,10 +22,13 @@ public class VrReserve2Action implements CommandProcess {
 			int cnum=Integer.parseInt(request.getParameter("cnum"));
 			
 			Theme theme = cd.v_theme(cnum,tnum);
-			
+			Member member=cd.member_into("bbb");
+
 			request.setAttribute("cnum", cnum);
 			request.setAttribute("tnum", tnum);
 			request.setAttribute("theme", theme);
+
+			request.setAttribute("member", member);
 			
 		}catch(Exception e){
 			System.out.println(e.getMessage());

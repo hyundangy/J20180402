@@ -34,7 +34,7 @@ public class CafeDAO {
 		return conn;
 	}
 	
-	// vr 카페 리스트 불러오기 (vrMainView)
+	// vr 移댄럹 由ъ뒪�듃 遺덈윭�삤湲� (vrMainView)
 	public List<Cafe> list() throws SQLException{	
 		List<Cafe> list = new ArrayList<Cafe>();
 		Connection conn = null;
@@ -75,7 +75,7 @@ public class CafeDAO {
 		return list;
 	}
 	
-	public List<Theme> v_select_theme(int cnum) throws SQLException{	// 해당 카페에 맞는 게임 리스트 불러오기(vrList1View)
+	public List<Theme> v_select_theme(int cnum) throws SQLException{	// �빐�떦 移댄럹�뿉 留욌뒗 寃뚯엫 由ъ뒪�듃 遺덈윭�삤湲�(vrList1View)
 		Connection conn=null;
 		Statement stmt=null;
 		ResultSet rs= null;
@@ -111,7 +111,7 @@ public class CafeDAO {
 		return list;
 	}
 	
-	// 카페 번호에 맞는 카페 정보 얻기(vrReserveView)
+	// 移댄럹 踰덊샇�뿉 留욌뒗 移댄럹 �젙蹂� �뼸湲�(vrReserveView)
 	public Cafe cafe_info(int cnum) throws SQLException{	
 		Cafe cafe = new Cafe();
 		Connection conn = null;
@@ -150,7 +150,7 @@ public class CafeDAO {
 		return cafe;
 	}
 	
-	public Theme v_theme(int cnum,int tnum) throws SQLException{	//예약하기 눌렀을 때, 게임 정보 불러오기(vrReserveView)
+	public Theme v_theme(int cnum,int tnum) throws SQLException{	//�삁�빟�븯湲� �닃���쓣 �븣, 寃뚯엫 �젙蹂� 遺덈윭�삤湲�(vrReserveView)
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs= null;
@@ -184,8 +184,8 @@ public class CafeDAO {
 		return theme;
 	}
 	
-	// 메인화면에서 방탈출이미지 클릭시, 방탈출 카페 리스트 보여주기
-		// roomMainAction.java 에서 사용
+	// 硫붿씤�솕硫댁뿉�꽌 諛⑺깉異쒖씠誘몄� �겢由��떆, 諛⑺깉異� 移댄럹 由ъ뒪�듃 蹂댁뿬二쇨린
+		// roomMainAction.java �뿉�꽌 �궗�슜
 		public List<Cafe> r_list() throws SQLException{  
 			List<Cafe> list = new ArrayList<Cafe>();
 			Connection conn = null;
@@ -225,7 +225,7 @@ public class CafeDAO {
 			return list;
 		}
 		
-		//카페 전체 리스트 받아오기
+		//移댄럹 �쟾泥� 由ъ뒪�듃 諛쏆븘�삤湲�
 		public List<Cafe> CafeList() throws SQLException {
 			List<Cafe> cafelist = new ArrayList<Cafe>();
 			String sql = "select * from cafe";
@@ -273,7 +273,7 @@ public class CafeDAO {
 		}
 		
 		//SearchGpsAction
-		//지역 keyword가 들어가는 카페 리스트 받아오기
+		//吏��뿭 keyword媛� �뱾�뼱媛��뒗 移댄럹 由ъ뒪�듃 諛쏆븘�삤湲�
 		public List<Cafe> searchCafelist(String keyword) throws SQLException {
 			List<Cafe> cafelist = new ArrayList<Cafe>();
 			String sql = "select * from cafe where caddress like ?";
@@ -323,8 +323,8 @@ public class CafeDAO {
 		
 		
 		
-		// 선택한 방탈출 카페에 대한 테마 리스트 보여주기
-		// roomListAction.java 에서 사용
+		// �꽑�깮�븳 諛⑺깉異� 移댄럹�뿉 ���븳 �뀒留� 由ъ뒪�듃 蹂댁뿬二쇨린
+		// roomListAction.java �뿉�꽌 �궗�슜
 		public List<Theme> r_select_theme(int cnum) throws SQLException{
 			Connection conn=null;
 			Statement stmt=null;
@@ -365,9 +365,9 @@ public class CafeDAO {
 		
 		
 		
-		// 선택한 방탈출 카페에 대한 정보(카페이름,소개,평점 등) 보여주기
-		// roomListAction.java 에서 사용
-		// roomThemeAction.java 에서 사용
+		// �꽑�깮�븳 諛⑺깉異� 移댄럹�뿉 ���븳 �젙蹂�(移댄럹�씠由�,�냼媛�,�룊�젏 �벑) 蹂댁뿬二쇨린
+		// roomListAction.java �뿉�꽌 �궗�슜
+		// roomThemeAction.java �뿉�꽌 �궗�슜
 		public Cafe r_list3(int cnum) throws SQLException{
 			Cafe cafe = new Cafe();
 			/*List<Cafe> list = new ArrayList<Cafe>();*/
@@ -411,8 +411,8 @@ public class CafeDAO {
 		
 		
 		
-		// 방탈출 카페와 테마까지 선택했다면, 선택한 테마에 대한 간략한 정보 보여주기
-		// roomThemeAction.java 에서 사용
+		// 諛⑺깉異� 移댄럹�� �뀒留덇퉴吏� �꽑�깮�뻽�떎硫�, �꽑�깮�븳 �뀒留덉뿉 ���븳 媛꾨왂�븳 �젙蹂� 蹂댁뿬二쇨린
+		// roomThemeAction.java �뿉�꽌 �궗�슜
 		public Theme r_theme(int cnum, int tnum) throws SQLException{
 			Theme theme = new Theme();
 			/*List<Cafe> list = new ArrayList<Cafe>();*/
@@ -449,4 +449,33 @@ public class CafeDAO {
 			return theme;
 		}
 	
+		//예약을 위한 멤버 테스트용
+		public Member member_into(String id) throws SQLException{
+			Connection conn=null;
+			PreparedStatement pstmt=null;
+			ResultSet rs= null;
+			String sql="select id,name,email,tel,point from member";
+			Member member= new Member();
+			try{
+				conn=getConnection();
+				pstmt=conn.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()){
+					member.setId(rs.getString("id"));
+					member.setName(rs.getString("name"));
+					member.setEmail(rs.getString("email"));
+					member.setTel(rs.getString("tel"));
+					member.setPoint(rs.getInt("point"));
+				}
+				
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}finally{
+				if(rs!=null) rs.close();
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}
+			return member;
+		}
 }

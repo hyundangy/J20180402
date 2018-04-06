@@ -133,40 +133,28 @@
 		</tr>
 		<tr>
 			<th scope="row">시간</th>
-			<td>1시</td>
+			<td></td>
 		</tr>
 		<tr>
 			<th scope="row">인원(Players)</th>
-			<td><select name="r_people">
-		            <optgroup label="" >
-		                <option value="1">1 </option>
-		                <option value="2">2</option>
-		                <option value="3">3</option>
-		                <option value="4">4</option>
-		            </optgroup>
-        </select></td>
+			<td></td>
 		</tr>
 		<tr>
 			<th scope="row">예약자</th>
-			<td><input type="text" name="r_name"></td>
+			<td><input type="text" hidden="name">
+			<script type="text/javascript">
+				document.form.people
+			</script>
+			</td>
 		</tr>
 		<tr>
 			<th scope="row">연락처</th>
-			<td><select name="r_phone">
-	           	    <optgroup label="" >
-	                <option value="1">010 </option>
-	                <option value="2">011</option>
-	                <option value="3">016</option>
-	                <option value="4">017</option>
-	                <option value="5">018</option>
-	                <option value="6">019</option>
-	            	</optgroup></select>
-	            <input type="tel"><input type="tel">
+			<td><input type="text" hidden="tel">${member.tel }
             </td>
 		</tr>
 		<tr>
 			<th scope="row">이메일</th>
-			<td><input type="email" name="r_email"></td>
+			<td><input type="email" hidden="r_email">${member.email }</td>
 		</tr>
 		<tr>
 			<th scope="row">총이용요금</th>

@@ -20,6 +20,7 @@ public class VrList1Action implements CommandProcess {
 		try{
 			int cnum=0;
 			cnum=Integer.parseInt(request.getParameter("cnum"));
+		
 			CafeDAO cd = CafeDAO.getInstance();
 			List<Theme> list = cd.v_select_theme(cnum);
 			request.setAttribute("list", list);
