@@ -1,6 +1,10 @@
+<%@page import="jdk.nashorn.internal.ir.debug.JSONWriter"%>
+<%@page import="netscape.javascript.JSObject"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -69,6 +73,7 @@
 	<c:set var="date1" value="<%=new Date() %>"></c:set>
 	
 </head>
+
 <body>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -110,7 +115,6 @@
 	</nav>
 
 
-
 	<div style="margin: auto;">		
 		<div id="top" style="margin-top: 50px">
 			<ul id="reserveList">
@@ -133,19 +137,15 @@
 		</tr>
 		<tr>
 			<th scope="row">시간</th>
-			<td></td>
+			<td> </td>
 		</tr>
 		<tr>
 			<th scope="row">인원(Players)</th>
-			<td></td>
+			<td><input type="text" id="people">${res.count }</td>
 		</tr>
 		<tr>
 			<th scope="row">예약자</th>
-			<td><input type="text" hidden="name">
-			<script type="text/javascript">
-				document.form.people
-			</script>
-			</td>
+			<td>${member.name }</td>
 		</tr>
 		<tr>
 			<th scope="row">연락처</th>
@@ -158,7 +158,7 @@
 		</tr>
 		<tr>
 			<th scope="row">총이용요금</th>
-			<td><input type="text" hidden="r_price">40,000 P</td>
+			<td><input type="text" hidden="r_price">${cafe.price }</td>
 		</tr>
 	</table>
 	<p><p>
@@ -177,11 +177,11 @@
 		</textarea>
 	</div>
 	<div align="center">
-	<input type="radio" name="agree" value="agreeY" checked="checked" />동의
-	<input type="radio" name="agree" value="agreeN"/>동의 안함
+	<input type="radio" name="agree" id="agree" value="agreeY" checked="checked" />동의
+	<input type="radio" name="agree" id="agree" value="agreeN"/>동의 안함
 	</div><p>
 	<div align="center">
-		<a href="vrReserve3View.jsp"><input type="button" value="다음단계"></a>
+		<a href="vrReserve3View.jsp"><input type="button" id="next" value="다음단계"></a>
 		<input type="button" value="취소">
 	</div>
 	<p>

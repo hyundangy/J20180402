@@ -68,5 +68,7 @@
 			<td>oh~~~~ good!!!</td>
 		</tr>
 	</table>
+	
+	<input type="button" value="후기 쓰기" style="margin-left: 900px; background-color:red;">
 </body>
 </html>

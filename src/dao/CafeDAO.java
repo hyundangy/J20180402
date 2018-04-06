@@ -478,4 +478,33 @@ public class CafeDAO {
 			}
 			return member;
 		}
+		
+		public int reservation(int cnum, int tnum) throws SQLException{
+			int result=0;
+			Connection conn = null;
+			PreparedStatement pstmt=null;
+			String sql = "insert into reservation values(?,?,?,?,'',?,?,?,?,?)";
+			Reservation res = new Reservation();
+			try{
+				conn=getConnection();
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, res.getResdate());
+				pstmt.setInt(2, res.getStarttime());
+				pstmt.setString(3, res.getId());
+				pstmt.setInt(4, res.getEndtime());
+				pstmt.setInt(5, res.getCnum());
+				pstmt.setInt(6, res.getTnum());
+				pstmt.setString(7, res.getResno());
+				pstmt.setInt(8, res.getCount());
+				pstmt.setInt(9, res.getPoint());
+				result=pstmt.executeUpdate();
+				
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}finally{
+				if(pstmt!=null) pstmt.close();
+				if(conn!=null) conn.close();
+			}
+			return result;
+		}
 }

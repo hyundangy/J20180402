@@ -23,6 +23,26 @@
 	}
 	table{ float: left; display: inline;}
 	</style>
+	
+	<script type="text/javascript">
+		$('#myTab a').click(function (e) {
+			  e.preventDefault()
+			  $(this).tab('show')
+			});
+	
+		$('#myTab a[href="#profile"]').tab('show') // Select tab by name
+		$('#myTab a:first').tab('show') // Select first tab
+		$('#myTab a:last').tab('show') // Select last tab
+		$('#myTab li:eq(2) a').tab('show') // Select third tab (0-indexed)
+		
+		
+	</script>
+		
+	<script type="text/javascript">
+		function popup() {
+			window.open('play.jsp','검색창','width=700,height=500');
+		}
+	</script>
 <style type="text/css">
 game1 { width:20%;}
 h2 {
@@ -50,6 +70,7 @@ h2 {
     transform: rotate(5deg);
 }
 #reserve { background-color: white; border-color: black; }
+#rate{ text-align: right;}
 </style>
 <script type="text/javascript">
 	function clk(){
@@ -72,6 +93,9 @@ h2 {
 		window.open('vrReviewView.jsp','리뷰창','width=1000,height=500');
 	}
 </script>
+<style type="text/css">
+	#cafe_info{ text-align: center;}
+</style>
 </head>
 <body>
 	
@@ -114,16 +138,41 @@ h2 {
 		</div>
 	</nav>
 	
+	<div id="cafe_info">
+	 <img src="images/${cafe.image1 }" alt="가게 이미지" width="300" height="200">
+	 <p><h1 style="color: gray">${cafe.cname }</h1><p>
+			
+			
+			<!-- 가게 평점 기능 구현해야함! -->
+			<img src="images/f_star.png" alt="평점" width="20" height="20">
+			<img src="images/f_star.png" alt="평점" width="20" height="20">
+			<img src="images/f_star.png" alt="평점" width="20" height="20">
+			<img src="images/f_star.png" alt="평점" width="20" height="20">
+			
+			${cafe.caddress }
+			<h5>${cafe.content }</h5>
+	
+	</div>
 	
 	
+		<!-- tab  -->
 	
-	<h2>콘텐츠 안내</h2>
+		<div role="tabpane1" style="margin-top: 50px">
+		  <!-- Nav tabs -->
+		  <ul class="nav nav-tabs" role="tablist">
+		    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">콘텐츠 안내</a></li>
+		    <li role="presentation"><a href="#reviewTab" aria-controls="reviewTab" role="tab" data-toggle="tab">후기</a></li>
+		  </ul>
 	
+	 	 <!-- Tab panes -->
+	 	 <div class="tab-content">
+	 	
+	  	  <div role="tabpanel" class="tab-pane active" id="home">
+	    	
 	<div id="game1" style="float:left">
 		<c:forEach var="theme" items="${list }">
 			
 	<table>
-		
 		<tr>
       	  <td>
       	  <div id="box">
@@ -338,8 +387,8 @@ h2 {
 		<tr>
 			<td id="content2">    		
 			<button style="border: 0; outline: 0; background-color: white;" onclick="clk()"><img src="images/like.png" id="img1" width="30" height="40"></button>
-    		<img src="images/play_button.png" width="30" height="40">
-    		<button id="review" class="review" style="border: 0; outline: 0; background-color: white;" onclick="pop()"><img src="images/review.png" width="30" height="40"></button>
+    		<img src="images/play_button.png" width="30" height="40" onclick="popup()">
+    		
 			 <a href="vrReserveView.do?cnum=${theme.cnum }&&tnum=${theme.tnum}"><button id="reserve">예약하기</button></a>
 			
 			</td>
@@ -353,6 +402,91 @@ h2 {
 		
 	</table>
 		</c:forEach>
+	
+	    
+	    </div>
+	    </div>
+	    
+	    
+	    <!------------------- 후기  tab  ------------------>
+	    <div role="tabpanel" class="tab-pane" id="reviewTab">
+	    	
+	    	<div id=top style="width: 100%; text-align: center; font-size: 20px;"  >
+		바른 후기 는 직접 체험한 회원만 작성할 수 있습니다.
+			</div>
+	
+	<table>
+		<tr>
+			<td><br>
+				<img src="${member.image}" width="150" height="150">
+			</td>
+			
+			<td>
+				너무 재밌었습니다!!!!! 재밌어요 재밌어요 재밌어요 재밌어요 재밌어요<br><hr>
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				
+				<span style="margin-left: 200px;">아이디: ${member.id} | 작성일: ${member.reg_date }</span>
+			</td>
+			
+		</tr>
+
+		<tr>
+			<td><br>
+				<img src="${member.image}" width="150" height="150">
+			</td>
+			
+			<td>
+				너무 재밌었습니다!!!!! 재밌어요 재밌어요 재밌어요 재밌어요 재밌어요<br><hr>
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				
+				<span style="margin-left: 200px;">아이디: ${member.id} | 작성일: ${member.reg_date }</span>
+			</td>
+			
+		</tr>
+		
+		<tr>
+			<td><br>
+				<img src="${member.image}" width="150" height="150">
+			</td>
+			
+			<td>
+				너무 재밌었습니다!!!!! 재밌어요 재밌어요 재밌어요 재밌어요 재밌어요<br><hr>
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				
+				<span style="margin-left: 200px;">아이디: ${member.id} | 작성일: ${member.reg_date }</span>
+			</td>
+			
+		</tr>
+		
+		<tr>
+			<td><br>
+				<img src="${member.image}" width="150" height="150">
+			</td>
+			
+			<td>
+				너무 재밌었습니다!!!!! 재밌어요 재밌어요 재밌어요 재밌어요 재밌어요<br><hr>
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				<img src="images/f_star.png" width="15" height="20">
+				
+				<span style="margin-left: 200px;">아이디: ${member.id} | 작성일: ${member.reg_date }</span>
+			</td>
+			
+		</tr>
+		
+	</table>
+	
+	
+	
+	</div>
+	</div>
+	</div>
 	
 	
 	

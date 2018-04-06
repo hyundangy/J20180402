@@ -81,6 +81,29 @@
 	 		alert("예약 가능한 인원은 *명 입니다.");
 	 	}
 	 </script>
+	 
+	 
+	 <script type="text/javascript">
+	 	function ajax() {
+			var start_time = $("#start_time").val();
+			var allData={"start_time":start_time};
+			$.ajax({
+		        url:"vrReserve2View.do",
+		        type:'GET',
+		        data: allData,
+		        success:function(data){
+		            alert("완료!");
+		            window.opener.location.reload();
+		            self.close();
+		        },
+		        error:function(jqXHR, textStatus, errorThrown){
+		            alert("에러 발생~~ \n" + textStatus + " : " + errorThrown);
+		            self.close();
+		        }
+		    });
+		}
+	 </script>
+	 
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -136,6 +159,7 @@
 	
 	<p id="subject" style="margin-left: 20px;">${theme.tname } - ${theme.tcontent }</p><hr>
 	
+
 	<table>
 	<tr>
 		<th>
@@ -144,57 +168,56 @@
 		<td>
 			<table>
 				<tr>
-				<td>${cafe.cname } - ${cafe.caddress }  </td>
+					<td>${cafe.cname } - ${cafe.caddress }  </td>
 				</tr>
 				
 				<tr>
-				<td>예약 날짜  <div id="datepicker"></div> </td>
+					<td>예약 날짜  <div id="datepicker"></div> </td>
 				</tr>
+	
 				<tr>
-					<td>
-					예약 시간 <select name="start_time">
-			<option value="">시작시간</option>
-			<option value="1">1시</option>
-			<option value="2">2시</option>
-			<option value="3">3시</option>
-			<option value="4">4시</option>
-			<option value="5">5시</option>
-			<option value="6">6시</option>
-			<option value="7">7시</option>
-			<option value="8">8시</option>
-			<option value="9">9시</option>
-			<option value="10">10시</option>
-			<option value="11">11시</option>
-			<option value="12">12시</option>
-		</select> 
-		~
-		<select name="end_time">
-			<option value="">종료시간</option>
-			<option value="1">1시</option>
-			<option value="2">2시</option>
-			<option value="3">3시</option>
-			<option value="4">4시</option>
-			<option value="5">5시</option>
-			<option value="6">6시</option>
-			<option value="7">7시</option>
-			<option value="8">8시</option>
-			<option value="9">9시</option>
-			<option value="10">10시</option>
-			<option value="11">11시</option>
-			<option value="12">12시</option>
-		</select>
-		<input type="button" id="seat" value="자리 확인하기" onclick="seat()">
+					<td>예약 시간 <select name="start_time" id="start_time">
+								<option value="">시작시간</option>
+								<option value="1">1시</option>
+								<option value="2">2시</option>
+								<option value="3">3시</option>
+								<option value="4">4시</option>
+								<option value="5">5시</option>
+								<option value="6">6시</option>
+								<option value="7">7시</option>
+								<option value="8">8시</option>
+								<option value="9">9시</option>
+								<option value="10">10시</option>
+								<option value="11">11시</option>
+								<option value="12">12시</option>
+						</select> ~ 
+						<select name="end_time" id="end_time">
+								<option value="">종료시간</option>
+								<option value="1">1시</option>
+								<option value="2">2시</option>
+								<option value="3">3시</option>
+								<option value="4">4시</option>
+								<option value="5">5시</option>
+								<option value="6">6시</option>
+								<option value="7">7시</option>
+								<option value="8">8시</option>
+								<option value="9">9시</option>
+								<option value="10">10시</option>
+								<option value="11">11시</option>
+								<option value="12">12시</option>
+						</select>
+					 <input type="button" id="seat" value="자리 확인하기" onclick="seat()">
 					</td>
 				</tr>
 				<tr>
-				<td>예약 인원 <input type="number" name="people" max="2" min="0">명</td>
+					<td>예약 인원 <input type="number" name="people" max="2" min="0">명</td>
 				</tr>
 			</table>
 	</table>
 	
 	
 	<input type="button" value="파티 생성" style="margin-left: 1000px;">
-	<a href="vrReserve2View.do?cnum=${theme.cnum }&&tnum=${theme.tnum}"><input type="button" value="예약 하기" style="margin-left: 5px;"></a>
+	<a href="vrReserve2View.do?cnum=${theme.cnum }&&tnum=${theme.tnum}"><input type="button" value="예약 하기" id="mul_input_submit" name="mul_input_submit" style="margin-left: 5px;"></a>
 	
 	
 	
